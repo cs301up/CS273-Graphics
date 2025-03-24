@@ -5,6 +5,7 @@
 // Import a couple of library-packages
 import java.awt.*;
 import javax.swing.*;
+import java.util.concurrent.TimeUnit;
 
 /** class Boxes
  *
@@ -23,15 +24,33 @@ public class Boxes extends Canvas
         //This line is important, don't remove it!
         super.paint(g);
         
+        g.drawString("Drawing boxes in 3 seconds...", 160, 160);
+        waitOneSecond();
+        waitOneSecond();
+        waitOneSecond();
+        
         //These statements draw some boxes, but they are not the boxes you want.
         //Replace them with the correct code.
         g.setColor(Color.red);
         g.fillRect(100,100,100,100);
+        waitOneSecond(); // To see the order in which the boxes appear. 
         g.setColor(Color.green);
         g.fillRect(200,200,100,100);
         
     }//paint
 
+    private void waitOneSecond()
+    {
+        try
+        {
+            TimeUnit.SECONDS.sleep(1);
+        }
+        catch (InterruptedException ie)
+        {
+            ie.printStackTrace();
+        }
+    }
+    
     /**
      * main
      *
